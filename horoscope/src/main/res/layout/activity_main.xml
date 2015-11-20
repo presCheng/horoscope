@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!-- android:fillViewport=\"true\" 什么意思
+            ScrollView里只放一个元素.
+            当ScrollView里的元素想填满ScrollView时,使用"fill_parent"是不管用的,必需为ScrollView设置：
+            android:fillViewport="true".
+            当ScrollView没有fillVeewport=“true”时,里面的元素(比如LinearLayout)会按照wrap_content来计算
+            (不论它是否设了"fill_parent"),而如果LinearLayout的元素设置了fill_parent,那么也是不管用的,
+            因为LinearLayout依赖里面的元素,而里面的元素又依赖LinearLayout,这样自相矛盾.
+            所以里面元素设置了fill_parent,也会当做wrap_content来计算.
+            -->
+            <HorizontalScrollView
+                android:id="@+id/hScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/header_bg"
+                android:fillViewport="true">
+
+            <!-- android:tabStripEnabled="false" 不在选项卡绘制-->
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:tabStripEnabled="false">
+
+                </TabWidget>
+
+
+            </HorizontalScrollView>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                 />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </TabHost>
+
+
+</LinearLayout>
